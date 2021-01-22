@@ -2,11 +2,12 @@ plugins {
     kotlin("jvm") version "1.4.21"
     kotlin("plugin.spring") version "1.4.21"
     `maven-publish`
+    `signing`
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 group = "io.github.murphp15"
-version = "1.0.0"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -72,12 +73,13 @@ publishing {
     }
     repositories {
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/murphp15/jwt-client-authentitation-filter")
             credentials {
                 username = project.findProperty("gpr.user")?.toString() ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key")?.toString() ?: System.getenv("TOKEN")
             }
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
         }
     }
 }
+
+
