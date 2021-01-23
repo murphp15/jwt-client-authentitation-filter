@@ -11,7 +11,7 @@ Each microservice that needs to validate a token can use this by including it in
 
 maven coordinates 
 
-```
+```xml
 <dependency>
   <groupId>io.github.murphp15</groupId>
   <artifactId>jwt-client-authentitation-filter</artifactId>
@@ -19,7 +19,7 @@ maven coordinates
 </dependency>
 ```
 
-```
+```kotlin
 @Configuration
 class WebSecurityConfig(val defaultUserDetailsRepo: UserDetailsCreator,
                         val tokenCreator: TokenCreator,
@@ -44,7 +44,7 @@ However if further augmentation of the authenticated user object is needed a cus
 
 e.g
 
-```
+```kotlin
 interface UserDetailsCreator {
     fun createFromToken(username: String, roles: List<String>): UserDetails?
 }
