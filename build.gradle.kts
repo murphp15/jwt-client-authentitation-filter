@@ -2,12 +2,12 @@ plugins {
     kotlin("jvm") version "1.4.21"
     kotlin("plugin.spring") version "1.4.21"
     `maven-publish`
-    `signing`
+    signing
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 group = "io.github.murphp15"
-version = "1.1.0"
+version = "1.0.10"
 
 repositories {
     mavenCentral()
@@ -49,7 +49,8 @@ publishing {
             }
             pom {
                 name.set("jwt")
-                description.set("jwt")
+                description.set("please see https://github.com/murphp15/jwt-client-authentitation-filter/blob/master/README.md")
+                url.set("https://github.com/murphp15/jwt-client-authentitation-filter")
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
@@ -64,9 +65,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git:git://github.com/murphp15/workout.git")
-                    developerConnection.set("scm:git:ssh://github.com/murphp15/workout.git")
-                    url.set("https://github.com/murphp15/workout")
+                    connection.set("scm:git:git://github.com/murphp15/jwt-client-authentitation-filter.git")
+                    developerConnection.set("scm:git:ssh://github.com/murphp15/jwt-client-authentitation-filter.git")
+                    url.set("https://github.com/murphp15/jwt-client-authentitation-filter")
                 }
             }
         }
@@ -74,12 +75,16 @@ publishing {
     repositories {
         maven {
             credentials {
-                username = project.findProperty("gpr.user")?.toString() ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key")?.toString() ?: System.getenv("TOKEN")
+                username = System.getProperty("funzo69")
+                password = System.getProperty("TOKEN")
             }
             url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
         }
     }
+}
+
+signing {
+    sign(publishing.publications["mavenJava"])
 }
 
 
