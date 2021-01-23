@@ -1,4 +1,4 @@
-# jwt-client-authentitation-filter
+# jwt-client-authorization-filter
 
 
 This is an implemntation of a jwt authentication filter for spring boot. 
@@ -11,8 +11,8 @@ maven coordinates
 ```xml
 <dependency>
   <groupId>io.github.murphp15</groupId>
-  <artifactId>jwt-client-authentitation-filter</artifactId>
-  <version>1.0.9</version>
+  <artifactId>jwt-client-authorization-filter</artifactId>
+  <version>1.0.0</version>
 </dependency>
 ```
 
