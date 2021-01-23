@@ -2,7 +2,8 @@
 
 
 This is an implemntation of a jwt authentication filter for spring boot. 
-There are many tutorials that describe how to build one of these but none of them provide an artifact that can be used. 
+There are many tutorials that describe how to build one of these but none of them provide an artifact that can be used. This allows you to avoid copying and pasting code into your own projects. 
+Example tutoirals: https://auth0.com/blog/implementing-jwt-authentication-on-spring-boot/, https://www.freecodecamp.org/news/how-to-setup-jwt-authorization-and-authentication-in-spring/, https://dzone.com/articles/implementing-jwt-authentication-on-spring-boot-api
 
 
 Each microservice that needs to validate a token can use this by including it in their webSecurityConfigurationAdapter. 
