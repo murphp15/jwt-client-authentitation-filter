@@ -5,7 +5,12 @@ name: Gradle Package
 
 on:
   release:
-    types: [published]
+    types: [ published ]
+
+
+env:
+  ORG_GRADLE_PROJECT_signingKey: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
+  ORG_GRADLE_PROJECT_signingPassword:  ${{ secrets.OSSRH_GPG_PASSWORD }}
 jobs:
   build:
 
