@@ -78,7 +78,7 @@ class JwtAuthorizationFilter(
                     )
                 }
             } catch (exception: ExpiredJwtException) {
-                log.warn("Request to parse expired JWT : {} failed : {}", token, exception.message)
+
             } catch (exception: UnsupportedJwtException) {
                 log.warn("Request to parse unsupported JWT : {} failed : {}", token, exception.message)
             } catch (exception: MalformedJwtException) {
@@ -90,5 +90,19 @@ class JwtAuthorizationFilter(
             }
         }
         return null
+    }
+
+    private fun allowForRefreshToken(ex: ExpiredJwtException, request: HttpServletRequest) {
+
+        // create a UsernamePasswordAuthenticationToken with null values.
+        val usernamePasswordAuthenticationToken = UsernamePasswordAuthenticationToken(null, null, null);
+        // After setting the Authentication in the context, we specify
+        // that the current user is authenticated. So it passes the
+        // Spring Security Configurations successfully.
+        SecurityContextHolder.getContext().authentication = usernamePasswordAuthenticationToken;
+        // Set the claims so that in controller we will be using it to create
+        // new JWT
+        request.setAttribute("claims", ex.claims);
+
     }
 }

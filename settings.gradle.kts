@@ -1,2 +1,2 @@
-rootProject.name = "jwt-client-authentitation-filter"
+rootProject.name = "jwt-client-authorization-filter"
 

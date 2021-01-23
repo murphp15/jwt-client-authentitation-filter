@@ -7,7 +7,7 @@ plugins {
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 group = "io.github.murphp15"
-version = "1.0.10"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -49,8 +49,8 @@ publishing {
             }
             pom {
                 name.set("jwt")
-                description.set("please see https://github.com/murphp15/jwt-client-authentitation-filter/blob/master/README.md")
-                url.set("https://github.com/murphp15/jwt-client-authentitation-filter")
+                description.set("please see https://github.com/murphp15/jwt-client-authorization-filter/blob/master/README.md")
+                url.set("https://github.com/murphp15/jwt-client-authorization-filter")
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
@@ -65,9 +65,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git:git://github.com/murphp15/jwt-client-authentitation-filter.git")
-                    developerConnection.set("scm:git:ssh://github.com/murphp15/jwt-client-authentitation-filter.git")
-                    url.set("https://github.com/murphp15/jwt-client-authentitation-filter")
+                    connection.set("scm:git:git://github.com/murphp15/jwt-client-authorization-filter.git")
+                    developerConnection.set("scm:git:ssh://github.com/murphp15/jwt-client-authorization-filter.git")
+                    url.set("https://github.com/murphp15/jwt-client-authorization-filter")
                 }
             }
         }
@@ -84,11 +84,6 @@ publishing {
 }
 
 signing {
-    val signingKey: String? by project
-    val signingPassword: String? by project
-    println("asjkldsa" + signingKey)
-    println("asjkldsa" + signingPassword)
-    useInMemoryPgpKeys(signingKey, signingPassword)
     sign(publishing.publications["mavenJava"])
 }
 
