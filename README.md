@@ -6,9 +6,6 @@ There are many tutorials that describe how to build one of these but none of the
 Example tutoirals: https://auth0.com/blog/implementing-jwt-authentication-on-spring-boot/, https://www.freecodecamp.org/news/how-to-setup-jwt-authorization-and-authentication-in-spring/, https://dzone.com/articles/implementing-jwt-authentication-on-spring-boot-api
 
 
-Each microservice that needs to validate a token can use this by including it in their webSecurityConfigurationAdapter. 
-
-
 maven coordinates 
 
 ```xml
@@ -18,6 +15,9 @@ maven coordinates
   <version>1.0.9</version>
 </dependency>
 ```
+
+Each microservice that needs to validate a token can use this by including it in their webSecurityConfigurationAdapter. 
+
 
 ```kotlin
 @Configuration
