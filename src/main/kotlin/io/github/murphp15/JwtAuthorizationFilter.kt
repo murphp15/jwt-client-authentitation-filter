@@ -56,10 +56,12 @@ class JwtAuthorizationFilter(
             try {
                 val signingKey = jwtSecret.toByteArray()
 
+
                 val parsedToken = Jwts.parserBuilder()
                     .setSigningKey(signingKey)
                     .build()
                     .parseClaimsJws(token)
+
 
                 val username = parsedToken.body.subject
 
@@ -67,6 +69,7 @@ class JwtAuthorizationFilter(
                 val authorities = rolesAsString
                     .map { authority -> SimpleGrantedAuthority(authority) }
 
+                require(authorities.isNotEmpty()) { "user must have some roles" }
                 if (username.isNotEmpty()) {
                     return UsernamePasswordAuthenticationToken(
                         userDetailsCreator.createFromToken(
@@ -78,14 +81,14 @@ class JwtAuthorizationFilter(
                     )
                 }
             } catch (exception: ExpiredJwtException) {
-
+                log.warn("Request to parse expired JWT : {} failed : {}", token, exception.message)
             } catch (exception: UnsupportedJwtException) {
                 log.warn("Request to parse unsupported JWT : {} failed : {}", token, exception.message)
             } catch (exception: MalformedJwtException) {
                 log.warn("Request to parse invalid JWT : {} failed : {}", token, exception.message)
             } catch (exception: SecurityException) {
                 log.warn("Request to parse JWT with invalid signature : {} failed : {}", token, exception.message)
-            } catch (exception: IllegalArgumentException) {
+            } catch (exception: Exception) {
                 log.warn("Request to parse empty or null JWT : {} failed : {}", token, exception.message)
             }
         }
